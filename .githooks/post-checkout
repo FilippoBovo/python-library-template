@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Warn if Python libraries differ from the installed one.
+if [ "$(pip freeze --exclude-editable)" != "$(cat requirements_dev.txt)" ]
+then
+  printf "The installed libraries are not the same as those specified in file requirements_dev.txt. ⚠️\n"
+  printf "To synchronise the installed libraries run:\n"
+  printf "  ./utilities/sync_python_virtualenv.sh\n"
+fi
